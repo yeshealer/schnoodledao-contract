@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
+import { SwapWidget } from '@uniswap/widgets'
 import { general, farming } from '../resources';
+// import '@uniswap/widgets/fonts.css'
 
 export class Home extends Component {
   static displayName = Home.name;
 
-  render () {
+  render() {
+    const provider = window.ethereum;
+    const jsonRpcEndpoint = "https://mainnet.infura.io/v3/88b5695364024cb3848468b63801a314"
+
+    const SNOOD = "0xD45740aB9ec920bEdBD9BAb2E863519E59731941"
+
     return (
       <div className="tw-overflow-hidden tw-antialiased tw-font-roboto tw-mx-4">
         <div className="h-noheader md:tw-flex">
           <div className="tw-flex tw-items-center tw-justify-center tw-w-full">
+            <SwapWidget
+              provider={provider}
+              jsonRpcEndpoint={jsonRpcEndpoint}
+              className="tw-mr-10"
+              defaultOutputTokenAddress={SNOOD}
+            />
             <div className="tw-px-4">
               <img className="tw-object-cover tw-w-1/2 tw-my-10" src="../../assets/img/svg/logo-schnoodle.svg" alt="Schnoodle logo" />
               <div className="maintitles tw-uppercase">{general.APP_NAME}</div>
